@@ -10,7 +10,7 @@ import (
 )
 
 func init() {
-	cli := app.Command("prefund", "(qtum) fund an owner address with utxos")
+	cli := app.Command("prefund", "(htmlcoin) fund an owner address with utxos")
 
 	owner := cli.Arg("owner", "contract name or address to fund").Required().String()
 
@@ -18,7 +18,7 @@ func init() {
 	multiples := cli.Arg("multiples", "fund this number of identical utxos").Default("1").Int()
 
 	appTasks["prefund"] = func() (err error) {
-		rpc := solar.QtumRPC()
+		rpc := solar.HtmlcoinRPC()
 
 		repo := solar.ContractsRepository()
 
@@ -64,7 +64,7 @@ func init() {
 			1. "fromaccount"         (string, required) DEPRECATED. The account to send the funds from. Should be "" for the default account
 			2. "amounts"             (string, required) A json object with addresses and amounts
 			    {
-			      "address":amount   (numeric or string) The qtum address is the key, the numeric amount (can be string) in QTUM is the value
+			      "address":amount   (numeric or string) The htmlcoin address is the key, the numeric amount (can be string) in HTMLCOIN is the value
 			      ,...
 			    }
 		*/
