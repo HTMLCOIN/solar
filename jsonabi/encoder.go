@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"github.com/pkg/errors"
-	"github.com/qtumproject/solar/abi"
+	"github.com/htmlcoin/solar/abi"
 )
 
 type Encoder struct {
