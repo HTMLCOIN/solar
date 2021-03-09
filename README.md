@@ -1,43 +1,25 @@
 # Install
 
 ```
-go get -u github.com/qtumproject/solar/cli/solar
+go get -u github.com/htmlcoin/solar/cli/solar
 ```
 
 `solar` assumes that the [Solidity compiler](https://github.com/ethereum/solidity) is already installed.
 
 # Prototype for Smart Contract deployment tool
 
-## QTUM
+## HTMLCOIN
 
-Start qtumd in regtest mode:
-
-```
-qtumd -regtest -rpcuser=howard -rpcpassword=yeh
-```
-
-Use env variable to specify the local qtumd RPC node:
+Start htmlcoind in regtest mode:
 
 ```
-export QTUM_RPC=http://howard:yeh@localhost:13889
+htmlcoind -regtest -rpcuser=user -rpcpassword=password
 ```
 
-## QTUM Docker
-
-You can run qtumd with docker, which comes bundled with solar (and `solc`):
+Use env variable to specify the local htmlcoind RPC node:
 
 ```
-docker run -it --rm \
-  --name myapp \
-  -v `pwd`:/dapp \
-  -p 3889:3889 \
-  hayeah/qtumportal
-```
-
-Then you enter into the container by running:
-
-```
-docker exec -it myapp sh
+export HTMLCOIN_RPC=http://user:password@localhost:4889
 ```
 
 ## Ethereum
@@ -156,7 +138,7 @@ You should see the address and ABI saved in a JSON file named `solar.development
       "txid": "dc36ebb365033f557367c88e4bad2f4c726a609e8a4cc0d5751ff4cab9187a51",
       "createdAt": "2018-01-26T11:36:09.650368039+08:00",
       "confirmed": true,
-      "sender": "qYqieW18XiFU1sYCrHFsiBpvxQVXpcwC3R",
+      "sender": "hYqieW18XiFU1sYCrHFsiBpvxQVXpcwC3R",
       "senderHex": "a7a0cff24ecf5089a5b5a814b9a6be942ade51c5"
     }
   },
@@ -225,8 +207,8 @@ Compile Solidity contracts.
 
 Flags:
   --help                     Show context-sensitive help (also try --help-long and --help-man).
-  --qtum_rpc=QTUM_RPC        RPC provider url
-  --qtum_sender=QTUM_SENDER  (qtum) Sender UTXO Address
+  --htmlcoin_rpc=HTMLCOIN_RPC        RPC provider url
+  --htmlcoin_sender=HTMLCOIN_SENDER  (htmlcoin) Sender UTXO Address
   --eth_rpc=ETH_RPC          RPC provider url
   --env="development"        Environment name
   --repo=REPO                Path of contracts repository
