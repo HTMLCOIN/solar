@@ -16,7 +16,7 @@ checksum := take4(sha256(sha256(data)))
 addr := data + checksum
 */
 
-// qcli gethexaddress qQGqkA16ZY6bCYy7Qjr77eU4BPsdadibCG
+// htmlcoin-cli gethexaddress hQGqkA16ZY6bCYy7Qjr77eU4BPsdadibCG
 // 49a80104c0d27a9ba29678d07e87a57151107613
 func ToHexString(data string) string {
 	// reverse
