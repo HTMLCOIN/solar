@@ -23,7 +23,7 @@ type DeployedContract struct {
 	CreatedAt     time.Time `json:"createdAt"`
 	Confirmed     bool      `json:"confirmed"`
 
-	// qtum
+	// htmlcoin
 	Sender    string `json:"sender,omitempty"`
 	SenderHex string `json:"senderHex,omitempty"`
 }
