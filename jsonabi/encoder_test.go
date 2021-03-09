@@ -9,7 +9,7 @@ import (
 	"testing"
 	"text/template"
 
-	"github.com/qtumproject/solar/abi"
+	"github.com/htmlcoin/solar/abi"
 	"github.com/stretchr/testify/assert"
 )
 
