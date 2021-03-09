@@ -9,18 +9,18 @@ import (
 	"sync"
 
 	"github.com/pkg/errors"
-	"github.com/qtumproject/solar/contract"
-	"github.com/qtumproject/solar/deployer"
-	"github.com/qtumproject/solar/deployer/eth"
-	"github.com/qtumproject/solar/deployer/qtum"
-	"github.com/qtumproject/solar/varstr"
+	"github.com/htmlcoin/solar/contract"
+	"github.com/htmlcoin/solar/deployer"
+	"github.com/htmlcoin/solar/deployer/eth"
+	"github.com/htmlcoin/solar/deployer/htmlcoin"
+	"github.com/htmlcoin/solar/varstr"
 	kingpin "gopkg.in/alecthomas/kingpin.v2"
 )
 
 var (
 	app               = kingpin.New("solar", "Solidity smart contract deployment management.")
-	qtumRPC           = app.Flag("qtum_rpc", "RPC provider url").Envar("QTUM_RPC").String()
-	qtumSenderAddress = app.Flag("qtum_sender", "(qtum) Sender UTXO Address").Envar("QTUM_SENDER").String()
+	htmlcoinRPC           = app.Flag("htmlcoin_rpc", "RPC provider url").Envar("HTMLCOIN_RPC").String()
+	htmlcoinSenderAddress = app.Flag("htmlcoin_sender", "(htmlcoin) Sender UTXO Address").Envar("HTMLCOIN_SENDER").String()
 
 	// geth --rpc --rpcapi="eth,personal,miner"
 	ethRPC    = app.Flag("eth_rpc", "RPC provider url").Envar("ETH_RPC").String()
@@ -35,7 +35,7 @@ var (
 type RPCPlatform int
 
 const (
-	RPCQtum     = iota
+	RPCHtmlcoin     = iota
 	RPCEthereum = iota
 )
 
@@ -53,16 +53,16 @@ type solarCLI struct {
 var solar = &solarCLI{}
 
 var (
-	errorUnspecifiedRPC = errors.New("Please specify RPC url by setting QTUM_RPC or ETH_RPC or using flag --qtum_rpc or --eth_rpc")
+	errorUnspecifiedRPC = errors.New("Please specify RPC url by setting HTMLCOIN_RPC or ETH_RPC or using flag --htmlcoin_rpc or --eth_rpc")
 )
 
 func (c *solarCLI) RPCPlatform() RPCPlatform {
-	if *qtumRPC == "" && *ethRPC == "" {
+	if *htmlcoinRPC == "" && *ethRPC == "" {
 		log.Fatalln(errorUnspecifiedRPC)
 	}
 
-	if *qtumRPC != "" {
-		return RPCQtum
+	if *htmlcoinRPC != "" {
+		return RPCHtmlcoin
 	}
 
 	return RPCEthereum
@@ -121,10 +121,10 @@ func (c *solarCLI) ContractsRepository() *contract.ContractsRepository {
 	return c.repo
 }
 
-func (c *solarCLI) QtumRPC() *qtum.RPC {
-	rpc, err := qtum.NewRPC(*qtumRPC)
+func (c *solarCLI) HtmlcoinRPC() *htmlcoin.RPC {
+	rpc, err := htmlcoin.NewRPC(*htmlcoinRPC)
 	if err != nil {
-		fmt.Println("Invalid QTUM RPC URL:", *qtumRPC)
+		fmt.Println("Invalid HTMLCOIN RPC URL:", *htmlcoinRPC)
 		os.Exit(1)
 	}
 
@@ -157,13 +157,13 @@ func (c *solarCLI) Deployer() (deployer deployer.Deployer) {
 	var err error
 	var rpcURL *url.URL
 
-	if rawurl := *qtumRPC; rawurl != "" {
+	if rawurl := *htmlcoinRPC; rawurl != "" {
 
 		rpcURL, err = url.ParseRequestURI(rawurl)
 		if err != nil {
 			log.Fatalf("Invalid RPC url: %#v", rawurl)
 		}
-		deployer, err = qtum.NewDeployer(rpcURL, c.ContractsRepository(), *qtumSenderAddress)
+		deployer, err = htmlcoin.NewDeployer(rpcURL, c.ContractsRepository(), *htmlcoinSenderAddress)
 	}
 
 	if rawurl := *ethRPC; rawurl != "" {
