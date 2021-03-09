@@ -1,4 +1,4 @@
-package qtum
+package htmlcoin
 
 import (
 	"bytes"
@@ -11,7 +11,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/qtumproject/solar/contract"
+	"github.com/htmlcoin/solar/contract"
 )
 
 type jsonRPCRequest struct {
@@ -109,7 +109,7 @@ func (rpc *RPC) Call(result interface{}, method string, params ...interface{}) (
 			errmsg = string(bytes)
 		}
 
-		return errors.Errorf("QTUM RPC %s:\n%s\n", res.Status, errmsg)
+		return errors.Errorf("HTMLCOIN RPC %s:\n%s\n", res.Status, errmsg)
 	}
 
 	dec := json.NewDecoder(res.Body)
@@ -125,6 +125,6 @@ func (rpc *RPC) Call(result interface{}, method string, params ...interface{}) (
 		return
 	}
 
-	// QTum RPC returns 500 for RPC error
+	// Htmlcoin RPC returns 500 for RPC error
 	return jsonResult.Error
 }
