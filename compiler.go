@@ -11,7 +11,7 @@ import (
 	"strings"
 
 	"github.com/pkg/errors"
-	"github.com/qtumproject/solar/contract"
+	"github.com/htmlcoin/solar/contract"
 )
 
 type rawCompilerOutput struct {
