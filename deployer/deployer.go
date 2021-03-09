@@ -3,7 +3,7 @@ package deployer
 import (
 	"math/big"
 
-	"github.com/qtumproject/solar/contract"
+	"github.com/htmlcoin/solar/contract"
 )
 
 type Options struct {
@@ -11,7 +11,7 @@ type Options struct {
 	Name      string
 	Overwrite bool
 
-	// GasPrice is specified in satoshi (qtum) or wei (ethereum)
+	// GasPrice is specified in satoshi (htmlcoin) or wei (ethereum)
 	GasPrice *big.Float
 	GasLimit uint
 }
