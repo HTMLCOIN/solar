@@ -1,8 +1,8 @@
 pragma solidity ^0.4.0;
 
-contract QtumTest {
+contract HtmlcoinTest {
    uint storedNumber;
-   function QtumTest() {
+   function HtmlcoinTest() {
        storedNumber=1;
    }
    function setNumber(uint number) public {
