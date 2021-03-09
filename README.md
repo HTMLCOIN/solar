@@ -5,79 +5,19 @@ go get -u github.com/htmlcoin/solar/cli/solar
 ```
 
 `solar` assumes that the [Solidity compiler](https://github.com/ethereum/solidity) is already installed.
+Put solc binary in go/bin
 
 # Prototype for Smart Contract deployment tool
 
 ## HTMLCOIN
 
-Start htmlcoind in regtest mode:
-
-```
-htmlcoind -regtest -rpcuser=user -rpcpassword=password
-```
+Start htmlcoind setting the rpcuser and rpcpassword:
 
 Use env variable to specify the local htmlcoind RPC node:
 
 ```
 export HTMLCOIN_RPC=http://user:password@localhost:4889
 ```
-
-## Ethereum
-
-Start an Ethereum node, with RPC service:
-
-```
-geth --rpc --rpcapi "eth,miner,personal" --datadir "./" --nodiscover console
-```
-
-Set the RPC endpoint, with your account address and password:
-
-```
-export ETH_RPC=http://$accountAddress:$accountPassword@localhost:8545
-```
-
-Specify a deployment environment.
-
-```
-# The environment is `development` by default
-export SOLAR_ENV=development
-```
-
-## ganache-cli
-
-Start ganache with a fixed seed:
-
-```
-ganache-cli -d testrpc -b 3
-```
-
-```
-export ETH_RPC=http://0x90f8bf6a479f320ead074411a4b0e7944ea8c9c1:@localhost:8545
-```
-
-## Parity Dev Chain
-
-For development purposes, an alternative to geth or testrpc is the parity dev chain. It supports instantaneous mining, and pre-generates an account already funded with Ether.
-
-```
-parity \
-  --chain dev \
-  --jsonrpc-hosts all \
-  --jsonrpc-interface all \
-  --ws-interface all \
-  --rpcport 8545 \
-  --no-discovery \
-  --max-peers=2 \
-  --min-peers=0 \
-  --geth
-```
-
-The magic account pre-generated account is `0x00a329c0648769a73afac7f9381e08fb43dbea72`. The password is the empty string.
-
-Configure ETH_RPC like this:
-
-```
-export ETH_RPC=http://0x00a329c0648769a73afac7f9381e08fb43dbea72:@localhost:8545
 ```
 
 # Deploy Contract
