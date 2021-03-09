@@ -1,4 +1,4 @@
-module github.com/qtumproject/solar
+module github.com/htmlcoin/solar
 
 go 1.15
 
