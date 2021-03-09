@@ -8,8 +8,8 @@ import (
 	"strings"
 
 	"github.com/pkg/errors"
-	"github.com/qtumproject/solar/contract"
-	"github.com/qtumproject/solar/deployer"
+	"github.com/htmlcoin/solar/contract"
+	"github.com/htmlcoin/solar/deployer"
 )
 
 type deployTarget struct {
@@ -82,7 +82,7 @@ func init() {
 			switch solar.RPCPlatform() {
 			case RPCEthereum:
 				gasPrice = "1"
-			case RPCQtum:
+			case RPCHtmlcoin:
 				gasPrice = "40"
 			}
 		}
