@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/qtumproject/solar/contract"
+	"github.com/htmlcoin/solar/contract"
 )
 
 func init() {
