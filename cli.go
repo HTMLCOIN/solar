@@ -14,7 +14,7 @@ import (
 	"github.com/htmlcoin/solar/deployer/eth"
 	"github.com/htmlcoin/solar/deployer/htmlcoin"
 	"github.com/htmlcoin/solar/varstr"
-	kingpin "gopkg.in/alecthomas/kingpin.v2"
+	kingpin "github.com/alecthomas/kingpin/v2"
 )
 
 var (
