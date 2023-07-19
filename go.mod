@@ -23,5 +23,6 @@ require (
 	golang.org/x/crypto v0.0.0-20190411191339-88737f569e3a // indirect
 	golang.org/x/net v0.0.0-20190415214537-1da14a5a36f2 // indirect
 	golang.org/x/tools v0.0.0-20190415205951-2e9de471ebd3
-	gopkg.in/alecthomas/kingpin.v2 v2.2.6
+	github.com/alecthomas/kingpin.v2 v2.3.2
+	github.com/alecthomas/kingpin v1.3.4
 )
